@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<!-- OG 分享卡的來源檔：用瀏覽器以 1200x630 視窗渲染，截圖成 assets/website/og-cover.png -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css" />
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css" />
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root { --accent: #3ECEB8; --blue: #5B9BFF; --purple: #8B7CF7; --ink: #052019; }
+  html, body { width: 1200px; height: 630px; overflow: hidden; }
+  body {
+    position: relative;
+    background: #07080A;
+    color: #EEF2F1;
+    font-family: "Inter", -apple-system, "PingFang TC", "Noto Sans TC", sans-serif;
+    display: flex; align-items: center;
+  }
+  /* atmosphere */
+  .glow { position: absolute; border-radius: 50%; filter: blur(90px); z-index: 0; }
+  .g1 { width: 620px; height: 620px; left: -160px; top: -220px; background: radial-gradient(circle, rgba(62,206,184,.30), transparent 62%); }
+  .g2 { width: 560px; height: 560px; right: -140px; bottom: -220px; background: radial-gradient(circle, rgba(139,124,247,.26), transparent 62%); }
+  .grid-tex { position: absolute; inset: 0; z-index: 0; opacity: .5;
+    background-image: linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+    background-size: 46px 46px; -webkit-mask: radial-gradient(ellipse 80% 80% at 30% 40%, #000, transparent 78%); mask: radial-gradient(ellipse 80% 80% at 30% 40%, #000, transparent 78%); }
+
+  .left { position: relative; z-index: 2; padding: 0 0 0 78px; width: 660px; }
+  .eyebrow { font-size: 17px; letter-spacing: .28em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 26px; }
+  .brand { display: flex; align-items: center; gap: 22px; }
+  .mark { width: 96px; height: 96px; border-radius: 24px; overflow: hidden; flex-shrink: 0;
+    box-shadow: 0 0 0 1px rgba(255,255,255,.08), 0 24px 60px -14px rgba(62,206,184,.6); background: #0c1013; }
+  .mark img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .word { font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 82px; letter-spacing: -.03em; line-height: 1; }
+  .tagline { margin-top: 30px; font-size: 30px; font-weight: 500; color: #C4CCCA; letter-spacing: -.01em; line-height: 1.35; max-width: 560px; }
+  .chips { display: flex; gap: 12px; margin-top: 34px; flex-wrap: wrap; }
+  .chip { display: inline-flex; align-items: center; gap: 9px; padding: 11px 18px; border-radius: 999px;
+    background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12); font-size: 19px; color: #D6DEDC; }
+  .chip i { font-size: 21px; color: var(--accent); }
+  .url { margin-top: 40px; display: inline-flex; align-items: center; gap: 10px; font-size: 20px; color: #7C8886; font-weight: 500; }
+  .url i { font-size: 22px; }
+
+  /* product screenshot, tilted, bleeding off the right edge */
+  .shot { position: absolute; z-index: 1; right: -110px; top: 50%; width: 620px;
+    transform: translateY(-50%) rotate(-8deg) scale(1.04); transform-origin: center;
+    border-radius: 18px; overflow: hidden; border: 1px solid rgba(255,255,255,.14);
+    box-shadow: 0 60px 120px -40px rgba(0,0,0,.9), 0 0 0 1px rgba(62,206,184,.14), 0 0 90px -10px rgba(62,206,184,.28); }
+  .shot img { width: 100%; display: block; }
+  .shot::after { content: ""; position: absolute; inset: 0; background: linear-gradient(280deg, transparent 55%, rgba(7,8,10,.55) 100%); }
+</style>
+</head>
+<body>
+  <div class="glow g1"></div>
+  <div class="glow g2"></div>
+  <div class="grid-tex"></div>
+
+  <div class="shot"><img src="assets/screenshots/hero.png" alt="" /></div>
+
+  <div class="left">
+    <div class="eyebrow">AI-Native Terminal</div>
+    <div class="brand">
+      <span class="mark"><img src="assets/icon/128x128@2x.png" alt="TempoTerm" /></span>
+      <span class="word">TempoTerm</span>
+    </div>
+    <div class="tagline">為開發而生的超輕量終端機軟體</div>
+    <div class="chips">
+      <span class="chip"><i class="ph ph-terminal"></i>終端機</span>
+      <span class="chip"><i class="ph ph-code"></i>編輯器</span>
+      <span class="chip"><i class="ph ph-git-fork"></i>Git</span>
+      <span class="chip"><i class="ph ph-sparkle"></i>AI 助手</span>
+    </div>
+    <div class="url"><i class="ph ph-github-logo"></i>github.com/mukiwu/tempo-term</div>
+  </div>
+</body>
+</html>

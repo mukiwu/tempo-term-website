@@ -5,6 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>TempoTerm — 為開發而生的超輕量終端機軟體</title>
 <meta name="description" content="TempoTerm 把終端機、程式碼編輯器、檔案總管、Git 與 AI 助手裝進同一個原生視窗，並即時追蹤 Claude Code 與 Codex 代理的工作狀態，提供完整的正體中文體驗。" />
+<link rel="canonical" href="https://mukiwu.github.io/tempo-term-website/" />
+<!-- Open Graph / Twitter 分享預覽 -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="TempoTerm" />
+<meta property="og:url" content="https://mukiwu.github.io/tempo-term-website/" />
+<meta property="og:title" content="TempoTerm — 為開發而生的超輕量終端機軟體" />
+<meta property="og:description" content="把終端機、程式碼編輯器、檔案總管、Git 與 AI 助手裝進同一個原生視窗，並即時追蹤 Claude Code 與 Codex 代理的工作狀態。" />
+<meta property="og:image" content="https://mukiwu.github.io/tempo-term-website/assets/website/og-cover.png" />
+<meta property="og:image:width" content="2400" />
+<meta property="og:image:height" content="1260" />
+<meta property="og:image:alt" content="TempoTerm — 為開發而生的超輕量終端機軟體" />
+<meta property="og:locale" content="zh_TW" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="TempoTerm — 為開發而生的超輕量終端機軟體" />
+<meta name="twitter:description" content="把終端機、程式碼編輯器、檔案總管、Git 與 AI 助手裝進同一個原生視窗。" />
+<meta name="twitter:image" content="https://mukiwu.github.io/tempo-term-website/assets/website/og-cover.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -1340,10 +1356,9 @@
   }
 
   function detect() {
+    // 預設一律正體中文（網站主語言）；只有使用者自己選過、存進 localStorage 的才覆蓋。
+    // 不依瀏覽器語言自動判斷，避免英文系統的訪客一進來就看到英文。
     try { var s = localStorage.getItem(STORE); if (s && LANGS.indexOf(s) >= 0) return s; } catch (e) {}
-    var n = (navigator.language || 'zh-Hant').toLowerCase();
-    if (n.indexOf('en') === 0) return 'en';
-    if (n.indexOf('zh') === 0) return /hans|cn|sg|my/.test(n) ? 'zh-Hans' : 'zh-Hant';
     return 'zh-Hant';
   }
 
