@@ -153,7 +153,17 @@
     .nav.open .nav-links a { display: flex; align-items: center; padding: 12px 14px; border-radius: 11px; font-size: 15px; color: var(--text); }
     .nav.open .nav-links a:active { background: rgba(255,255,255,.06); }
     .nav.open .nav-cta.desk { display: inline-flex; justify-content: center; margin-top: 2px; }
+    .nav.open .lang-seg { align-self: center; margin-top: 6px; }
   }
+
+  /* language segmented switch (lives in the nav; also shows in the mobile dropdown) */
+  .lang-seg { display: inline-flex; align-items: center; gap: 2px; padding: 2px; border-radius: var(--r-pill);
+    background: rgba(255,255,255,.04); border: 1px solid var(--line); flex-shrink: 0; }
+  .lang-seg button { appearance: none; border: none; cursor: pointer; font: inherit; font-weight: 600; font-size: 12px;
+    line-height: 1.5; letter-spacing: .02em; padding: 3px 9px; border-radius: var(--r-pill); color: var(--muted);
+    background: transparent; transition: color var(--q) var(--ease), background var(--q) var(--ease); }
+  .lang-seg button:hover { color: var(--text); }
+  .lang-seg button.on { color: var(--accent-ink); background: var(--accent); }
 
   /* ============================================================
      CINEMATIC HERO (pinned scroll sequence)
@@ -764,12 +774,17 @@
     <a class="brand" href="#top"><span class="mark img"><img src="assets/icon/128x128@2x.png" alt="TempoTerm" /></span>TempoTerm</a>
     <div class="nav-menu">
       <div class="nav-links">
-        <a href="#solution">功能介紹</a>
+        <a href="#solution" data-i18n="features">功能介紹</a>
         <a class="nav-gh" href="https://github.com/mukiwu/tempo-term" target="_blank" rel="noopener">GitHub <span class="gh-stars"><i class="ph-fill ph-star"></i><b id="ghStars">181</b></span></a>
+        <div class="lang-seg" id="langSeg" role="group" aria-label="Language">
+          <button type="button" data-lang="zh-Hant">繁</button>
+          <button type="button" data-lang="en">EN</button>
+          <button type="button" data-lang="zh-Hans">简</button>
+        </div>
       </div>
-      <a class="btn btn-primary nav-cta desk" href="#download">免費下載</a>
+      <a class="btn btn-primary nav-cta desk" href="#download" data-i18n="nav.download">免費下載</a>
     </div>
-    <button class="nav-toggle" aria-label="選單" aria-expanded="false"><i class="ph ph-list"></i></button>
+    <button class="nav-toggle" data-i18n-attr="aria-label:nav.menu" aria-label="選單" aria-expanded="false"><i class="ph ph-list"></i></button>
   </nav>
 </div>
 
@@ -786,19 +801,19 @@
       <div class="col">
         <!-- Groups & agent sessions (headline) -->
         <div class="cc" data-ox="-1" data-oy="-0.55">
-          <div class="cc-h"><span class="cc-ic purple"><i class="ph ph-squares-four"></i></span><h3>群組與 AI 代理狀態</h3></div>
-          <p>每個分頁都能即時追蹤 Claude 或 Codex 的工作狀態，以及 Git 分支、worktree 與對應的 PR</p>
+          <div class="cc-h"><span class="cc-ic purple"><i class="ph ph-squares-four"></i></span><h3 data-i18n="hero.groups.h">群組與 AI 代理狀態</h3></div>
+          <p data-i18n="hero.groups.p">每個分頁都能即時追蹤 Claude 或 Codex 的工作狀態，以及 Git 分支、worktree 與對應的 PR</p>
           <div class="cc-stage agent-fill" style="padding:12px;">
-            <div class="mini-row"><span class="mini-branch"><i class="ph ph-git-branch"></i>feat/auth</span><span class="dot-badge sb-work"><span class="d"></span>執行中</span></div>
-            <div class="mini-row"><span class="mini-branch"><i class="ph ph-git-branch"></i>fix/pty</span><span class="dot-badge sb-think"><span class="d"></span>思考中</span></div>
-            <div class="mini-row"><span class="mini-branch"><i class="ph ph-git-branch"></i>ui/split</span><span class="dot-badge sb-wait"><span class="d"></span>等待核准</span></div>
-            <div class="mini-row"><span class="mini-branch"><i class="ph ph-git-branch"></i>docs/readme</span><span class="dot-badge sb-done"><span class="d"></span>完成</span></div>
+            <div class="mini-row"><span class="mini-branch"><i class="ph ph-git-branch"></i>feat/auth</span><span class="dot-badge sb-work"><span class="d"></span><span data-i18n="badge.work">執行中</span></span></div>
+            <div class="mini-row"><span class="mini-branch"><i class="ph ph-git-branch"></i>fix/pty</span><span class="dot-badge sb-think"><span class="d"></span><span data-i18n="badge.think">思考中</span></span></div>
+            <div class="mini-row"><span class="mini-branch"><i class="ph ph-git-branch"></i>ui/split</span><span class="dot-badge sb-wait"><span class="d"></span><span data-i18n="badge.wait">等待核准</span></span></div>
+            <div class="mini-row"><span class="mini-branch"><i class="ph ph-git-branch"></i>docs/readme</span><span class="dot-badge sb-done"><span class="d"></span><span data-i18n="badge.done">完成</span></span></div>
           </div>
         </div>
         <!-- Git graph (real DAG) -->
         <div class="cc" data-ox="-1" data-oy="0.55">
-          <div class="cc-h"><span class="cc-ic"><i class="ph ph-git-fork"></i></span><h3>版本控制</h3></div>
-          <p>漂亮的 TUI Git 線圖，可以透過 AI 直接解釋 commit diff</p>
+          <div class="cc-h"><span class="cc-ic"><i class="ph ph-git-fork"></i></span><h3 data-i18n="hero.git.h">版本控制</h3></div>
+          <p data-i18n="hero.git.p">漂亮的 TUI Git 線圖，可以透過 AI 直接解釋 commit diff</p>
           <div class="cc-stage" style="padding:0;">
             <div class="gitgraph">
               <div class="git-rail">
@@ -813,11 +828,11 @@
                 <span class="gdot main" style="left:14px;top:90%"></span>
               </div>
               <div class="git-rows">
-                <div class="grow"><span class="ghash">a1f4c8b</span><span class="gmsg"><b>feat:</b> 代理狀態徽章</span></div>
-                <div class="grow"><span class="ghash mg">7bcb389</span><span class="gmsg">併入 feature/agents</span></div>
-                <div class="grow"><span class="ghash">9c7d551</span><span class="gmsg"><span class="bp">feat:</span> 分割面板拖放</span></div>
-                <div class="grow"><span class="ghash">3b0e219</span><span class="gmsg"><span class="bp">fix:</span> 修正 WebView2 死結</span></div>
-                <div class="grow"><span class="ghash">e50952f</span><span class="gmsg"><b>chore:</b> 更新相依套件</span></div>
+                <div class="grow"><span class="ghash">a1f4c8b</span><span class="gmsg"><b>feat:</b> <span data-i18n="git.msg1">代理狀態徽章</span></span></div>
+                <div class="grow"><span class="ghash mg">7bcb389</span><span class="gmsg"><span data-i18n="git.msg2">併入 feature/agents</span></span></div>
+                <div class="grow"><span class="ghash">9c7d551</span><span class="gmsg"><span class="bp">feat:</span> <span data-i18n="git.msg3">分割面板拖放</span></span></div>
+                <div class="grow"><span class="ghash">3b0e219</span><span class="gmsg"><span class="bp">fix:</span> <span data-i18n="git.msg4">修正 WebView2 死結</span></span></div>
+                <div class="grow"><span class="ghash">e50952f</span><span class="gmsg"><b>chore:</b> <span data-i18n="git.msg5">更新相依套件</span></span></div>
               </div>
             </div>
           </div>
@@ -828,8 +843,8 @@
       <div class="col col-2">
         <!-- Terminal -->
         <div class="cc" data-ox="0" data-oy="-1">
-          <div class="cc-h"><span class="cc-ic"><i class="ph ph-terminal"></i></span><h3>原生終端機</h3></div>
-          <p>以原生 PTY 驅動的 xterm.js v6，支援 zsh 指令自動建議與終端機內搜尋</p>
+          <div class="cc-h"><span class="cc-ic"><i class="ph ph-terminal"></i></span><h3 data-i18n="hero.term.h">原生終端機</h3></div>
+          <p data-i18n="hero.term.p">以原生 PTY 驅動的 xterm.js v6，支援 zsh 指令自動建議與終端機內搜尋</p>
           <div class="cc-stage" style="padding:0;">
             <div class="term">
               <div class="tbar"><span class="td r"></span><span class="td y"></span><span class="td g"></span><span class="tt">zsh · tempo-term</span></div>
@@ -848,12 +863,12 @@
           <span class="badge">AI-NATIVE TERMINAL</span>
           <div class="mark-lg img"><img src="assets/icon/128x128@2x.png" alt="TempoTerm" /></div>
           <div class="word">TempoTerm</div>
-          <p class="tag">給你最好的終端機體驗</p>
+          <p class="tag" data-i18n="best_experience">給你最好的終端機體驗</p>
         </div>
         <!-- Split panes -->
         <div class="cc" data-ox="0" data-oy="1">
-          <div class="cc-h"><span class="cc-ic amber"><i class="ph ph-columns"></i></span><h3>自由分割面板</h3></div>
-          <p>支援四種分割面板：單擊、拖曳到面板、右鍵選單，或拖到分頁列開新分頁</p>
+          <div class="cc-h"><span class="cc-ic amber"><i class="ph ph-columns"></i></span><h3 data-i18n="hero.split.h">自由分割面板</h3></div>
+          <p data-i18n="hero.split.p">支援四種分割面板：單擊、拖曳到面板、右鍵選單，或拖到分頁列開新分頁</p>
           <div class="cc-stage">
             <div class="split"><div class="pa"></div><div class="pb"></div><div class="pc"></div></div>
           </div>
@@ -864,41 +879,41 @@
       <div class="col">
         <!-- AI assistant -->
         <div class="cc" data-ox="1" data-oy="-0.55">
-          <div class="cc-h"><span class="cc-ic blue"><i class="ph ph-sparkle"></i></span><h3>AI 助手 · 自帶金鑰</h3></div>
-          <p>支援 BYOK: OpenAI、Anthropic、Antigravity、Groq、DeepSeek、Ollama，以及任何相容 OpenAI 的端點</p>
+          <div class="cc-h"><span class="cc-ic blue"><i class="ph ph-sparkle"></i></span><h3 data-i18n="hero.ai.h">AI 助手 · 自帶金鑰</h3></div>
+          <p data-i18n="hero.ai.p">支援 BYOK: OpenAI、Anthropic、Antigravity、Groq、DeepSeek、Ollama，以及任何相容 OpenAI 的端點</p>
           <div class="cc-stage" style="min-height:150px;">
             <div class="bsw">
-              <div class="bsw-head"><span>供應商</span><span class="bsw-lock"><i class="ph-fill ph-lock-key"></i>金鑰加密綁定本機</span></div>
+              <div class="bsw-head"><span data-i18n="hero.ai.provider">供應商</span><span class="bsw-lock"><i class="ph-fill ph-lock-key"></i><span data-i18n="hero.ai.lock">金鑰加密綁定本機</span></span></div>
               <div class="bsw-list">
                 <div class="bsw-hi"></div>
-                <div class="bsw-item p1"><span class="bd"></span>Anthropic Claude<span class="on">● 已連線</span></div>
-                <div class="bsw-item p2"><span class="bd"></span>OpenAI GPT<span class="on">● 已連線</span></div>
-                <div class="bsw-item p3"><span class="bd"></span>Google Gemini<span class="on">● 已連線</span></div>
-                <div class="bsw-item p4"><span class="bd"></span>Ollama 本機<span class="on">● 已連線</span></div>
+                <div class="bsw-item p1"><span class="bd"></span>Anthropic Claude<span class="on" data-i18n="hero.ai.connected">● 已連線</span></div>
+                <div class="bsw-item p2"><span class="bd"></span>OpenAI GPT<span class="on" data-i18n="hero.ai.connected">● 已連線</span></div>
+                <div class="bsw-item p3"><span class="bd"></span>Google Gemini<span class="on" data-i18n="hero.ai.connected">● 已連線</span></div>
+                <div class="bsw-item p4"><span class="bd"></span>Ollama <span data-i18n="hero.ai.local">本機</span><span class="on" data-i18n="hero.ai.connected">● 已連線</span></div>
               </div>
             </div>
           </div>
         </div>
         <!-- AI Sessions dashboard -->
         <div class="cc" data-ox="1" data-oy="0.55">
-          <div class="cc-h"><span class="cc-ic pink"><i class="ph ph-chart-donut"></i></span><h3>AI Sessions 儀表板</h3></div>
-          <p>在同一處瀏覽 Claude Code、Codex 與 Antigravity CLI 的所有歷史對話，直接讀取本機的 session 檔案</p>
+          <div class="cc-h"><span class="cc-ic pink"><i class="ph ph-chart-donut"></i></span><h3 data-i18n="hero.sessions.h">AI Sessions 儀表板</h3></div>
+          <p data-i18n="hero.sessions.p">在同一處瀏覽 Claude Code、Codex 與 Antigravity CLI 的所有歷史對話，直接讀取本機的 session 檔案</p>
           <div class="cc-stage" style="padding:11px;">
             <div class="heat" id="heat"></div>
             <div class="dash-stats">
-              <div class="ds"><b>1,203</b><small>對話</small></div>
-              <div class="ds"><b>48.9k</b><small>訊息</small></div>
-              <div class="ds"><b>46</b><small>專案</small></div>
-              <div class="ds"><b>51</b><small>活躍天</small></div>
+              <div class="ds"><b>1,203</b><small data-i18n="sess.conv">對話</small></div>
+              <div class="ds"><b>48.9k</b><small data-i18n="sess.msg">訊息</small></div>
+              <div class="ds"><b>46</b><small data-i18n="sess.proj">專案</small></div>
+              <div class="ds"><b>51</b><small data-i18n="sess.active">活躍天</small></div>
             </div>
-            <div class="dash-cost2"><span class="donut sm"></span><div><b>≈ US$ 3,562</b><small>估算成本 · 僅計輸出 token</small></div></div>
+            <div class="dash-cost2"><span class="donut sm"></span><div><b>≈ US$ 3,562</b><small data-i18n="sess.cost">估算成本 · 僅計輸出 token</small></div></div>
           </div>
         </div>
       </div>
     </div>
     </div>
 
-    <div class="cine-hint" id="cineHint"><span>向下捲動</span><i class="ph ph-caret-double-down"></i></div>
+    <div class="cine-hint" id="cineHint"><span data-i18n="hero.hint">向下捲動</span><i class="ph ph-caret-double-down"></i></div>
   </div>
 </section>
 
@@ -909,20 +924,20 @@
   <section id="integrate">
     <div class="wrap">
       <div class="sec-head sh-wide">
-        <p class="eyebrow reveal">為開發而生的超輕量終端機軟體</p>
-        <h2 class="hx-blur"><span class="line">TempoTerm 整合多個流程，</span><span class="line l2">讓你有更好的開發體驗</span></h2>
-        <p class="reveal" data-d="1">在原生終端機裡，加入檔案總管、Worktree 追蹤、Git 線圖、AI 助手、SSH 連線與程式碼編輯器…等功能，且持續增加中</p>
+        <p class="eyebrow reveal" data-i18n="tagline">為開發而生的超輕量終端機軟體</p>
+        <h2 class="hx-blur"><span class="line" data-i18n="integrate.h1">TempoTerm 整合多個流程，</span><span class="line l2" data-i18n="integrate.h2">讓你有更好的開發體驗</span></h2>
+        <p class="reveal" data-d="1" data-i18n="integrate.p">在原生終端機裡，加入檔案總管、Worktree 追蹤、Git 線圖、AI 助手、SSH 連線與程式碼編輯器…等功能，且持續增加中</p>
       </div>
 
       <div class="showcase reveal">
         <div class="showcase-frame" data-parallax="0.06">
-          <img src="assets/screenshots/hero.png" alt="TempoTerm 工作區：檔案總管、程式碼編輯器、終端機與 AI 助手同框" loading="lazy" />
+          <img src="assets/screenshots/hero.png" data-i18n-attr="alt:integrate.alt" alt="TempoTerm 工作區：檔案總管、程式碼編輯器、終端機與 AI 助手同框" loading="lazy" />
         </div>
         <div class="sc-tools">
-          <span><i class="ph ph-git-fork"></i>免費開源</span>
-          <span><i class="ph ph-feather"></i>輕量安裝 ≈ 8MB</span>
-          <span><i class="ph ph-arrows-clockwise"></i>持續更新</span>
-          <span><i class="ph ph-puzzle-piece"></i>整合度高</span>
+          <span><i class="ph ph-git-fork"></i><span data-i18n="sc.opensource">免費開源</span></span>
+          <span><i class="ph ph-feather"></i><span data-i18n="sc.lightweight">輕量安裝 ≈ 8MB</span></span>
+          <span><i class="ph ph-arrows-clockwise"></i><span data-i18n="sc.updates">持續更新</span></span>
+          <span><i class="ph ph-puzzle-piece"></i><span data-i18n="sc.integrated">整合度高</span></span>
         </div>
       </div>
 
@@ -941,18 +956,18 @@
             <span class="av"><img src="assets/website/avatar.png" alt="MUKi" /></span>
             <div><div class="nm">MUKi</div><div class="role">@mukiwu · MUKI space*</div></div>
           </div>
-          <div class="pc-slogan">打造順手的 AI 開發工具</div>
+          <div class="pc-slogan" data-i18n="philo.slogan">打造順手的 AI 開發工具</div>
           <div class="philo-stat">
             <div class="pc-stats">
-              <div class="ps"><b>59</b><span>專案</span></div>
-              <div class="ps"><b>528</b><span>累計 ★</span></div>
-              <div class="ps"><b>340</b><span>追蹤人數</span></div>
+              <div class="ps"><b>59</b><span data-i18n="philo.projects">專案</span></div>
+              <div class="ps"><b>528</b><span data-i18n="philo.stars">累計 ★</span></div>
+              <div class="ps"><b>340</b><span data-i18n="philo.followers">追蹤人數</span></div>
             </div>
           </div>
         </a>
         <div class="reveal from-right">
           <div class="qmark">&ldquo;</div>
-          <blockquote>會想自己動手做一個終端機，是因為我想把筆記和 Git 線圖整合進來。<span>而且整套工具，能照著我自己的開發節奏來設計。</span></blockquote>
+          <blockquote data-i18n-html="philo.quote">會想自己動手做一個終端機，是因為我想把筆記和 Git 線圖整合進來。<span>而且整套工具，能照著我自己的開發節奏來設計。</span></blockquote>
         </div>
       </div>
     </div>
@@ -963,8 +978,8 @@
     <div class="wrap">
       <div class="sec-head reveal">
         <p class="eyebrow">Solution</p>
-        <h2>終端機工作區，重新想像</h2>
-        <p>一個視窗，一整套流程。從代理狀態到 Git 圖、從遠端檔案到即時系統資源。</p>
+        <h2 data-i18n="sol.h">終端機工作區，重新想像</h2>
+        <p data-i18n="sol.p">一個視窗，一整套流程。從代理狀態到 Git 圖、從遠端檔案到即時系統資源。</p>
       </div>
       <div class="solution-panel">
         <div class="sf-grid">
@@ -972,13 +987,13 @@
           <!-- 編輯器 (寬格) · 第一排最左 → 第 2 個出 -->
           <article class="sf wide reveal" data-d="2">
             <div class="sf-cap"><span class="sf-ic" style="background:rgba(139,124,247,.15);color:var(--purple)"><i class="ph ph-code"></i></span>
-              <div class="sf-tx"><h4>編輯器</h4><p>CodeMirror 6 語法高亮，AI ghost text 行內補全，按 Tab 接受，Markdown 可切換編輯與預覽</p></div></div>
+              <div class="sf-tx"><h4 data-i18n="sol.editor.h">編輯器</h4><p data-i18n="sol.editor.p">CodeMirror 6 語法高亮，AI ghost text 行內補全，按 Tab 接受，Markdown 可切換編輯與預覽</p></div></div>
             <div class="sf-mock"><div class="sf-mock-in">
               <div class="sm sm-ed"><div class="sm-win">
                 <div class="sm-bar"><span class="sm-dot" style="background:#8B7CF7"></span>greet.ts<span class="g pn">CodeMirror 6 · TypeScript</span></div>
                 <div class="sm-body">
                   <div class="row"><span class="gut">1</span><span><span class="kw">export function</span> <span class="fn">greet</span>(<span class="vr">name</span>: <span class="fn">string</span>) {</span></div>
-                  <div class="row"><span class="gut">2</span><span>  <span class="kw">const</span> <span class="vr">label</span> = <span class="st">`Hi, ${name}`</span>.<span class="fn">trim</span>()<span class="ghost">.toUpperCase()</span><span class="sm-pill tabkey">Tab 接受</span></span></div>
+                  <div class="row"><span class="gut">2</span><span>  <span class="kw">const</span> <span class="vr">label</span> = <span class="st">`Hi, ${name}`</span>.<span class="fn">trim</span>()<span class="ghost">.toUpperCase()</span><span class="sm-pill tabkey" data-i18n="sol.editor.tab">Tab 接受</span></span></div>
                   <div class="row"><span class="gut">3</span><span>  <span class="kw">return</span> <span class="vr">label</span> ? <span class="vr">label</span> : <span class="st">"friend"</span></span></div>
                   <div class="row"><span class="gut">4</span><span>}</span></div>
                   <div class="row"><span class="gut">5</span><span></span></div>
@@ -992,10 +1007,10 @@
           <!-- 檔案總管 · 第一排中間 → 第 3 個出 -->
           <article class="sf reveal" data-d="4">
             <div class="sf-cap"><span class="sf-ic" style="background:var(--tealt);color:var(--accent)"><i class="ph ph-tree-structure"></i></span>
-              <div class="sf-tx"><h4>檔案總管</h4><p>模糊搜尋加內容 grep，cd 與終端機兩邊即時雙向同步</p></div></div>
+              <div class="sf-tx"><h4 data-i18n="sol.fx.h">檔案總管</h4><p data-i18n="sol.fx.p">模糊搜尋加內容 grep，cd 與終端機兩邊即時雙向同步</p></div></div>
             <div class="sf-mock"><div class="sf-mock-in">
               <div class="sm sm-fx"><div class="sm-win">
-                <div class="sm-bar"><i class="ph ph-folder"></i>EXPLORER<span class="g sm-pill" style="color:var(--accent);border:1px solid rgba(62,206,184,.35);background:rgba(62,206,184,.1)">cd 同步</span></div>
+                <div class="sm-bar"><i class="ph ph-folder"></i>EXPLORER<span class="g sm-pill" style="color:var(--accent);border:1px solid rgba(62,206,184,.35);background:rgba(62,206,184,.1)" data-i18n="sol.fx.cd">cd 同步</span></div>
                 <div class="sm-body">
                   <div class="find"><i class="ph ph-magnifying-glass"></i><span>btn.tsx</span><span class="car"></span></div>
                   <div class="sm-tree">
@@ -1012,7 +1027,7 @@
           <!-- SSH 與遠端檔案 · 第一排最右 → 第 1 個出 -->
           <article class="sf reveal">
             <div class="sf-cap"><span class="sf-ic" style="background:rgba(91,155,255,.14);color:var(--blue)"><i class="ph ph-cloud"></i></span>
-              <div class="sf-tx"><h4>SSH 與遠端檔案</h4><p>SSH 連線、本機埠轉發，透過 SFTP 直接瀏覽與編輯遠端檔</p></div></div>
+              <div class="sf-tx"><h4 data-i18n="sol.ssh.h">SSH 與遠端檔案</h4><p data-i18n="sol.ssh.p">SSH 連線、本機埠轉發，透過 SFTP 直接瀏覽與編輯遠端檔</p></div></div>
             <div class="sf-mock"><div class="sf-mock-in">
               <div class="sm sm-ssh"><div class="sm-win">
                 <div class="sm-bar"><span class="sm-dot pulse" style="background:#3ECEB8"></span>SFTP · deploy@prod-1<span class="g sm-pill pf">-L 5432</span></div>
@@ -1031,10 +1046,10 @@
           <!-- 網頁預覽 · 第二排最左 → 第 3 個出 -->
           <article class="sf reveal" data-d="4">
             <div class="sf-cap"><span class="sf-ic" style="background:rgba(255,176,103,.14);color:var(--amber)"><i class="ph ph-browser"></i></span>
-              <div class="sf-tx"><h4>網頁預覽</h4><p>原生子 webview，不受 X-Frame-Options 限制，存檔即更新</p></div></div>
+              <div class="sf-tx"><h4 data-i18n="sol.web.h">網頁預覽</h4><p data-i18n="sol.web.p">原生子 webview，不受 X-Frame-Options 限制，存檔即更新</p></div></div>
             <div class="sf-mock"><div class="sf-mock-in">
               <div class="sm sm-web"><div class="sm-win">
-                <div class="sm-bar nav"><i class="ph ph-caret-left"></i><i class="ph ph-caret-right"></i><i class="ph ph-arrow-clockwise"></i><span class="adr">localhost:1420</span><span class="live sm-pill">● 即時</span></div>
+                <div class="sm-bar nav"><i class="ph ph-caret-left"></i><i class="ph ph-caret-right"></i><i class="ph ph-arrow-clockwise"></i><span class="adr">localhost:1420</span><span class="live sm-pill" data-i18n="sol.web.live">● 即時</span></div>
                 <div class="sm-body"><div class="page"><div class="ph m"></div><div class="ph s"></div><div class="ph m"></div></div></div>
               </div></div>
             </div></div>
@@ -1043,16 +1058,16 @@
           <!-- 筆記 · 第二排中間 → 第 1 個出 -->
           <article class="sf reveal">
             <div class="sf-cap"><span class="sf-ic" style="background:rgba(255,122,182,.14);color:var(--pink)"><i class="ph ph-note-pencil"></i></span>
-              <div class="sf-tx"><h4>筆記</h4><p>TipTap 所見即所得，斜線選單，程式碼可一鍵丟終端機執行</p></div></div>
+              <div class="sf-tx"><h4 data-i18n="sol.note.h">筆記</h4><p data-i18n="sol.note.p">TipTap 所見即所得，斜線選單，程式碼可一鍵丟終端機執行</p></div></div>
             <div class="sf-mock"><div class="sf-mock-in">
               <div class="sm sm-note"><div class="sm-win"><div class="sm-body">
-                <h6>部署筆記</h6>
-                <div class="li">• 確認環境變數與版本</div>
+                <h6 data-i18n="sol.note.title">部署筆記</h6>
+                <div class="li" data-i18n="sol.note.li">• 確認環境變數與版本</div>
                 <div class="slash">
-                  <div class="o sel"><i class="ph ph-code"></i>程式碼區塊</div>
-                  <div class="o"><i class="ph ph-check-square"></i>待辦清單</div>
+                  <div class="o sel"><i class="ph ph-code"></i><span data-i18n="sol.note.code">程式碼區塊</span></div>
+                  <div class="o"><i class="ph ph-check-square"></i><span data-i18n="sol.note.todo">待辦清單</span></div>
                 </div>
-                <div class="cb"><span class="pn">$ pnpm build</span><span class="run sm-pill"><i class="ph ph-play"></i>執行</span></div>
+                <div class="cb"><span class="pn">$ pnpm build</span><span class="run sm-pill"><i class="ph ph-play"></i><span data-i18n="sol.note.run">執行</span></span></div>
               </div></div></div>
             </div></div>
           </article>
@@ -1060,7 +1075,7 @@
           <!-- 狀態列與埠監控 (寬格) · 第二排最右 → 第 2 個出 -->
           <article class="sf wide reveal" data-d="2">
             <div class="sf-cap"><span class="sf-ic" style="background:var(--tealt);color:var(--accent)"><i class="ph ph-gauge"></i></span>
-              <div class="sf-tx"><h4>狀態列與埠監控</h4><p>即時 CPU、記憶體、網路，列出佔用埠的行程與資源用量，可直接結束</p></div></div>
+              <div class="sf-tx"><h4 data-i18n="sol.sys.h">狀態列與埠監控</h4><p data-i18n="sol.sys.p">即時 CPU、記憶體、網路，列出佔用埠的行程與資源用量，可直接結束</p></div></div>
             <div class="sf-mock"><div class="sf-mock-in">
               <div class="sm sm-sys"><div class="sm-win"><div class="sm-body">
                 <div class="gauges">
@@ -1081,17 +1096,17 @@
 
         <div class="grid-3 reveal" style="margin-top:24px;">
           <div class="sol-cell" style="align-items:flex-start;">
-            <div class="lbl" style="font-size:12px;color:var(--faint);">費用與授權</div>
-            <div class="num">免費</div>
-            <p>Apache 2.0 開源、無訂閱、免註冊</p>
+            <div class="lbl" style="font-size:12px;color:var(--faint);" data-i18n="sol.stat.license.lbl">費用與授權</div>
+            <div class="num" data-i18n="sol.stat.license.v">免費</div>
+            <p data-i18n="sol.stat.license.p">Apache 2.0 開源、無訂閱、免註冊</p>
           </div>
           <div class="sol-cell" style="align-items:flex-start;">
-            <div class="lbl" style="font-size:12px;color:var(--faint);">安裝大小</div>
+            <div class="lbl" style="font-size:12px;color:var(--faint);" data-i18n="sol.stat.size.lbl">安裝大小</div>
             <div class="num">≈&nbsp;8&nbsp;MB</div>
-            <p>Rust + Tauri，開啟快</p>
+            <p data-i18n="sol.stat.size.p">Rust + Tauri，開啟快</p>
           </div>
           <div class="sol-cell" style="align-items:flex-start;">
-            <div class="lbl" style="font-size:12px;color:var(--faint);">AI CLI 整合</div>
+            <div class="lbl" style="font-size:12px;color:var(--faint);" data-i18n="sol.stat.ai.lbl">AI CLI 整合</div>
             <div class="num" data-count="3" data-suffix="">0</div>
             <p>Claude Code · Codex · Antigravity</p>
           </div>
@@ -1124,11 +1139,11 @@
   <section class="cta-band" id="download">
     <div class="cta-flow" id="ctaFlow" aria-hidden="true"></div>
     <div class="wrap reveal">
-      <h2>給你最好的終端機體驗</h2>
-      <p style="font-size:13px;">最新版本：<span id="ctaVersion">v0.1.1</span></p>
+      <h2 data-i18n="best_experience">給你最好的終端機體驗</h2>
+      <p style="font-size:13px;"><span data-i18n="cta.version">最新版本：</span><span id="ctaVersion">v0.1.1</span></p>
       <div class="cta-row">
-        <a class="btn btn-primary fx-cta" id="dlMac" data-dl="mac" href="https://github.com/mukiwu/tempo-term/releases/download/v0.1.1/TempoTerm_0.1.1_aarch64.dmg"><i class="ph ph-apple-logo"></i> 下載 macOS 版</a>
-        <a class="btn btn-dark fx-cta" id="dlWin" data-dl="win" href="https://github.com/mukiwu/tempo-term/releases/download/v0.1.1/TempoTerm_0.1.1_x64-setup.exe"><i class="ph ph-windows-logo"></i> 下載 Windows 版</a>
+        <a class="btn btn-primary fx-cta" id="dlMac" data-dl="mac" href="https://github.com/mukiwu/tempo-term/releases/download/v0.1.1/TempoTerm_0.1.1_aarch64.dmg"><i class="ph ph-apple-logo"></i> <span data-i18n="cta.mac">下載 macOS 版</span></a>
+        <a class="btn btn-dark fx-cta" id="dlWin" data-dl="win" href="https://github.com/mukiwu/tempo-term/releases/download/v0.1.1/TempoTerm_0.1.1_x64-setup.exe"><i class="ph ph-windows-logo"></i> <span data-i18n="cta.win">下載 Windows 版</span></a>
         <a class="btn btn-ghost" href="https://github.com/mukiwu/tempo-term"><i class="ph ph-github-logo"></i> GitHub</a>
       </div>
     </div>
@@ -1140,24 +1155,24 @@
       <div class="foot-grid">
         <div class="foot-brand">
           <a class="brand" href="#top"><span class="mark img"><img src="assets/icon/128x128@2x.png" alt="TempoTerm" /></span>TempoTerm</a>
-          <p>為開發而生的超輕量終端機軟體</p>
+          <p data-i18n="tagline">為開發而生的超輕量終端機軟體</p>
           <div class="foot-social">
             <a href="https://github.com/mukiwu/tempo-term" aria-label="GitHub"><i class="ph ph-github-logo"></i></a>
             <a href="https://portaly.cc/mukiwu/support" aria-label="Support"><i class="ph ph-heart"></i></a>
           </div>
         </div>
         <div class="foot-col">
-          <h5>下載</h5>
+          <h5 data-i18n="foot.download">下載</h5>
           <a data-dl="mac" href="https://github.com/mukiwu/tempo-term/releases/download/v0.1.1/TempoTerm_0.1.1_aarch64.dmg">macOS</a>
           <a data-dl="win" href="https://github.com/mukiwu/tempo-term/releases/download/v0.1.1/TempoTerm_0.1.1_x64-setup.exe">Windows</a>
-          <a href="https://github.com/mukiwu/tempo-term/releases">所有版本</a>
+          <a href="https://github.com/mukiwu/tempo-term/releases" data-i18n="foot.allversions">所有版本</a>
         </div>
         <div class="foot-col">
-          <h5>專案</h5>
-          <a href="#solution">功能介紹</a>
-          <a href="https://github.com/mukiwu/tempo-term">原始碼</a>
+          <h5 data-i18n="foot.project">專案</h5>
+          <a href="#solution" data-i18n="features">功能介紹</a>
+          <a href="https://github.com/mukiwu/tempo-term" data-i18n="foot.source">原始碼</a>
           <a href="https://github.com/mukiwu/tempo-term/blob/main/LICENSE">Apache-2.0</a>
-          <a href="https://portaly.cc/mukiwu/support">贊助支持</a>
+          <a href="https://portaly.cc/mukiwu/support" data-i18n="foot.sponsor">贊助支持</a>
         </div>
       </div>
       <div class="foot-bottom">
@@ -1167,6 +1182,179 @@
   </footer>
 </main>
 
+<script>
+/* ============================================================
+   i18n — 正體中文（baseline，讀自 DOM）· English · 简体中文
+   zh-Hant 是單一真相來源：載入時從頁面現有文字抓 baseline，
+   下面字典只存 en + zh-Hans。元素用 data-i18n（textContent）、
+   data-i18n-html（innerHTML）或 data-i18n-attr="attr:key" 標記。
+   ============================================================ */
+(function () {
+  var DICT = {
+    'features':            { en: 'Features',                 'zh-Hans': '功能介绍' },
+    'nav.download':        { en: 'Free Download',            'zh-Hans': '免费下载' },
+    'nav.menu':            { en: 'Menu',                      'zh-Hans': '菜单' },
+
+    'hero.groups.h':       { en: 'Groups & agent status',    'zh-Hans': '群组与 AI 代理状态' },
+    'hero.groups.p':       { en: 'Every tab tracks its Claude or Codex status live, plus the Git branch, worktree and matching PR', 'zh-Hans': '每个标签页都能实时追踪 Claude 或 Codex 的工作状态，以及 Git 分支、worktree 与对应的 PR' },
+    'badge.work':          { en: 'Working',                  'zh-Hans': '执行中' },
+    'badge.think':         { en: 'Thinking',                 'zh-Hans': '思考中' },
+    'badge.wait':          { en: 'Needs approval',           'zh-Hans': '等待批准' },
+    'badge.done':          { en: 'Done',                     'zh-Hans': '完成' },
+
+    'hero.git.h':          { en: 'Version control',          'zh-Hans': '版本控制' },
+    'hero.git.p':          { en: 'A clean TUI Git graph, with AI to explain any commit diff', 'zh-Hans': '漂亮的 TUI Git 线图，可以通过 AI 直接解释 commit diff' },
+    'git.msg1':            { en: 'agent status badge',       'zh-Hans': '代理状态徽章' },
+    'git.msg2':            { en: 'Merge feature/agents',     'zh-Hans': '并入 feature/agents' },
+    'git.msg3':            { en: 'split-pane drag & drop',   'zh-Hans': '分割面板拖放' },
+    'git.msg4':            { en: 'fix WebView2 deadlock',    'zh-Hans': '修复 WebView2 死锁' },
+    'git.msg5':            { en: 'update dependencies',      'zh-Hans': '更新依赖' },
+
+    'hero.term.h':         { en: 'Native terminal',          'zh-Hans': '原生终端' },
+    'hero.term.p':         { en: 'xterm.js v6 over a native PTY, with zsh autosuggestions and in-terminal search', 'zh-Hans': '以原生 PTY 驱动的 xterm.js v6，支持 zsh 命令自动建议与终端内搜索' },
+
+    'best_experience':     { en: 'The best terminal experience', 'zh-Hans': '给你最好的终端体验' },
+
+    'hero.split.h':        { en: 'Free split panes',         'zh-Hans': '自由分割面板' },
+    'hero.split.p':        { en: 'Four ways to split: click, drag onto a pane, right-click menu, or drop onto the tab bar', 'zh-Hans': '支持四种分割方式：单击、拖曳到面板、右键菜单，或拖到标签栏开新标签页' },
+
+    'hero.ai.h':           { en: 'AI assistant · BYOK',      'zh-Hans': 'AI 助手 · 自带密钥' },
+    'hero.ai.p':           { en: 'Bring your own key: OpenAI, Anthropic, Antigravity, Groq, DeepSeek, Ollama and any OpenAI-compatible endpoint', 'zh-Hans': '支持 BYOK：OpenAI、Anthropic、Antigravity、Groq、DeepSeek、Ollama，以及任何兼容 OpenAI 的端点' },
+    'hero.ai.provider':    { en: 'Providers',                'zh-Hans': '供应商' },
+    'hero.ai.lock':        { en: 'Keys encrypted, bound to this device', 'zh-Hans': '密钥加密绑定本机' },
+    'hero.ai.connected':   { en: '● Connected',              'zh-Hans': '● 已连接' },
+    'hero.ai.local':       { en: 'Local',                    'zh-Hans': '本地' },
+
+    'hero.sessions.h':     { en: 'AI Sessions dashboard',    'zh-Hans': 'AI Sessions 仪表盘' },
+    'hero.sessions.p':     { en: 'Browse every Claude Code, Codex and Antigravity CLI conversation in one place, read straight from local session files', 'zh-Hans': '在同一处浏览 Claude Code、Codex 与 Antigravity CLI 的所有历史对话，直接读取本地的 session 文件' },
+    'sess.conv':           { en: 'Chats',                    'zh-Hans': '对话' },
+    'sess.msg':            { en: 'Messages',                 'zh-Hans': '消息' },
+    'sess.proj':           { en: 'Projects',                 'zh-Hans': '项目' },
+    'sess.active':         { en: 'Active days',              'zh-Hans': '活跃天' },
+    'sess.cost':           { en: 'Est. cost · output tokens only', 'zh-Hans': '估算成本 · 仅计输出 token' },
+
+    'hero.hint':           { en: 'Scroll down',              'zh-Hans': '向下滚动' },
+
+    'tagline':             { en: 'A lightweight terminal built for developers', 'zh-Hans': '为开发而生的超轻量终端软件' },
+    'integrate.h1':        { en: 'TempoTerm brings your workflow together,', 'zh-Hans': 'TempoTerm 整合多个流程，' },
+    'integrate.h2':        { en: 'for a better development experience', 'zh-Hans': '让你拥有更好的开发体验' },
+    'integrate.p':         { en: 'Inside a native terminal: a file explorer, worktree tracking, a Git graph, an AI assistant, SSH and a code editor, with more landing all the time', 'zh-Hans': '在原生终端里，加入文件管理器、Worktree 追踪、Git 线图、AI 助手、SSH 连接与代码编辑器…等功能，且持续增加中' },
+    'integrate.alt':       { en: 'TempoTerm workspace: file explorer, code editor, terminal and AI assistant in one frame', 'zh-Hans': 'TempoTerm 工作区：文件管理器、代码编辑器、终端与 AI 助手同框' },
+
+    'sc.opensource':       { en: 'Free & open source',       'zh-Hans': '免费开源' },
+    'sc.lightweight':      { en: 'Lightweight ≈ 8MB',        'zh-Hans': '轻量安装 ≈ 8MB' },
+    'sc.updates':          { en: 'Actively updated',         'zh-Hans': '持续更新' },
+    'sc.integrated':       { en: 'Deeply integrated',        'zh-Hans': '整合度高' },
+
+    'philo.slogan':        { en: 'Building AI dev tools that feel right', 'zh-Hans': '打造顺手的 AI 开发工具' },
+    'philo.projects':      { en: 'Repos',                    'zh-Hans': '项目' },
+    'philo.stars':         { en: 'Total ★',                  'zh-Hans': '累计 ★' },
+    'philo.followers':     { en: 'Followers',                'zh-Hans': '关注者' },
+    'philo.quote':         { en: 'I built my own terminal because I wanted notes and a Git graph baked right in.<span>And so the whole toolset could follow my own rhythm of development.</span>', 'zh-Hans': '会想自己动手做一个终端，是因为我想把笔记和 Git 线图整合进来。<span>而且整套工具，能照着我自己的开发节奏来设计。</span>' },
+
+    'sol.h':               { en: 'The terminal workspace, reimagined', 'zh-Hans': '终端工作区，重新想象' },
+    'sol.p':               { en: 'One window, the whole workflow. From agent status to the Git graph, from remote files to live system resources.', 'zh-Hans': '一个窗口，一整套流程。从代理状态到 Git 图、从远程文件到实时系统资源。' },
+    'sol.editor.h':        { en: 'Editor',                   'zh-Hans': '编辑器' },
+    'sol.editor.p':        { en: 'CodeMirror 6 highlighting, AI ghost-text inline completion (press Tab to accept), and edit/preview toggle for Markdown', 'zh-Hans': 'CodeMirror 6 语法高亮，AI ghost text 行内补全，按 Tab 接受，Markdown 可切换编辑与预览' },
+    'sol.editor.tab':      { en: 'Tab to accept',            'zh-Hans': 'Tab 接受' },
+    'sol.fx.h':            { en: 'File explorer',            'zh-Hans': '文件管理器' },
+    'sol.fx.p':            { en: 'Fuzzy find plus content grep, with cd synced both ways with the terminal', 'zh-Hans': '模糊搜索加内容 grep，cd 与终端两边实时双向同步' },
+    'sol.fx.cd':           { en: 'cd synced',                'zh-Hans': 'cd 同步' },
+    'sol.ssh.h':           { en: 'SSH & remote files',       'zh-Hans': 'SSH 与远程文件' },
+    'sol.ssh.p':           { en: 'SSH connections, local port forwarding, and browse or edit remote files over SFTP', 'zh-Hans': 'SSH 连接、本地端口转发，通过 SFTP 直接浏览与编辑远程文件' },
+    'sol.web.h':           { en: 'Web preview',              'zh-Hans': '网页预览' },
+    'sol.web.p':           { en: 'A native child webview, free of X-Frame-Options limits, updating the moment you save', 'zh-Hans': '原生子 webview，不受 X-Frame-Options 限制，保存即更新' },
+    'sol.web.live':        { en: '● Live',                   'zh-Hans': '● 实时' },
+    'sol.note.h':          { en: 'Notes',                    'zh-Hans': '笔记' },
+    'sol.note.p':          { en: 'TipTap WYSIWYG, a slash menu, and code you can send to the terminal in one click', 'zh-Hans': 'TipTap 所见即所得，斜杠菜单，代码可一键丢终端执行' },
+    'sol.note.title':      { en: 'Deploy notes',             'zh-Hans': '部署笔记' },
+    'sol.note.li':         { en: '• Check env vars and version', 'zh-Hans': '• 确认环境变量与版本' },
+    'sol.note.code':       { en: 'Code block',               'zh-Hans': '代码块' },
+    'sol.note.todo':       { en: 'To-do list',               'zh-Hans': '待办清单' },
+    'sol.note.run':        { en: 'Run',                      'zh-Hans': '运行' },
+    'sol.sys.h':           { en: 'Status bar & port monitor', 'zh-Hans': '状态栏与端口监控' },
+    'sol.sys.p':           { en: 'Live CPU, memory and network; list the processes holding each port with their usage, and end them right there', 'zh-Hans': '实时 CPU、内存、网络，列出占用端口的进程与资源用量，可直接结束' },
+
+    'sol.stat.license.lbl': { en: 'Price & license',         'zh-Hans': '费用与授权' },
+    'sol.stat.license.v':  { en: 'Free',                     'zh-Hans': '免费' },
+    'sol.stat.license.p':  { en: 'Apache 2.0, no subscription, no sign-up', 'zh-Hans': 'Apache 2.0 开源、无订阅、免注册' },
+    'sol.stat.size.lbl':   { en: 'Install size',             'zh-Hans': '安装大小' },
+    'sol.stat.size.p':     { en: 'Rust + Tauri, fast to launch', 'zh-Hans': 'Rust + Tauri，启动快' },
+    'sol.stat.ai.lbl':     { en: 'AI CLI integration',       'zh-Hans': 'AI CLI 整合' },
+
+    'cta.version':         { en: 'Latest version: ',         'zh-Hans': '最新版本：' },
+    'cta.mac':             { en: 'Download for macOS',       'zh-Hans': '下载 macOS 版' },
+    'cta.win':             { en: 'Download for Windows',     'zh-Hans': '下载 Windows 版' },
+
+    'foot.download':       { en: 'Download',                 'zh-Hans': '下载' },
+    'foot.allversions':    { en: 'All releases',             'zh-Hans': '所有版本' },
+    'foot.project':        { en: 'Project',                  'zh-Hans': '项目' },
+    'foot.source':         { en: 'Source code',              'zh-Hans': '源代码' },
+    'foot.sponsor':        { en: 'Sponsor',                  'zh-Hans': '赞助支持' },
+
+    'meta.title':          { en: 'TempoTerm — a lightweight, AI-native terminal', 'zh-Hans': 'TempoTerm — 为开发而生的超轻量终端软件' },
+    'meta.desc':           { en: 'TempoTerm brings the terminal, code editor, file explorer, Git and an AI assistant into one native window, and tracks your Claude Code and Codex agent status live.', 'zh-Hans': 'TempoTerm 把终端、代码编辑器、文件管理器、Git 与 AI 助手装进同一个原生窗口，并实时追踪 Claude Code 与 Codex 代理的工作状态。' }
+  };
+
+  var LANGS = ['zh-Hant', 'en', 'zh-Hans'];
+  var STORE = 'tt-lang';
+  var htmlEl = document.documentElement;
+
+  var textEls = [].slice.call(document.querySelectorAll('[data-i18n]'));
+  var htmlEls = [].slice.call(document.querySelectorAll('[data-i18n-html]'));
+  var attrEls = [].slice.call(document.querySelectorAll('[data-i18n-attr]'));
+  var descEl = document.querySelector('meta[name="description"]');
+
+  // capture the zh-Hant baseline straight from the DOM
+  var base = {};
+  textEls.forEach(function (el) { var k = el.getAttribute('data-i18n'); if (base[k] == null) base[k] = el.textContent; });
+  htmlEls.forEach(function (el) { var k = el.getAttribute('data-i18n-html'); if (base[k] == null) base[k] = el.innerHTML; });
+  attrEls.forEach(function (el) {
+    var sp = el.getAttribute('data-i18n-attr').split(':'); // "attr:key"
+    if (base['@' + sp[1]] == null) base['@' + sp[1]] = el.getAttribute(sp[0]);
+  });
+  base['meta.title'] = document.title;
+  if (descEl) base['meta.desc'] = descEl.getAttribute('content');
+
+  function pick(k, lang, attr) {
+    var bk = attr ? '@' + k : k;
+    if (lang === 'zh-Hant') return base[bk];
+    var e = DICT[k];
+    return (e && e[lang] != null) ? e[lang] : base[bk]; // missing → fall back to zh-Hant
+  }
+
+  function apply(lang) {
+    if (LANGS.indexOf(lang) < 0) lang = 'zh-Hant';
+    htmlEl.setAttribute('lang', lang);
+    textEls.forEach(function (el) { var t = pick(el.getAttribute('data-i18n'), lang); if (t != null) el.textContent = t; });
+    htmlEls.forEach(function (el) { var t = pick(el.getAttribute('data-i18n-html'), lang); if (t != null) el.innerHTML = t; });
+    attrEls.forEach(function (el) {
+      var sp = el.getAttribute('data-i18n-attr').split(':');
+      var t = pick(sp[1], lang, true); if (t != null) el.setAttribute(sp[0], t);
+    });
+    var mt = pick('meta.title', lang); if (mt != null) document.title = mt;
+    if (descEl) { var md = pick('meta.desc', lang); if (md != null) descEl.setAttribute('content', md); }
+    var seg = document.getElementById('langSeg');
+    if (seg) [].slice.call(seg.querySelectorAll('button')).forEach(function (b) { b.classList.toggle('on', b.getAttribute('data-lang') === lang); });
+    try { localStorage.setItem(STORE, lang); } catch (e) {}
+  }
+
+  function detect() {
+    try { var s = localStorage.getItem(STORE); if (s && LANGS.indexOf(s) >= 0) return s; } catch (e) {}
+    var n = (navigator.language || 'zh-Hant').toLowerCase();
+    if (n.indexOf('en') === 0) return 'en';
+    if (n.indexOf('zh') === 0) return /hans|cn|sg|my/.test(n) ? 'zh-Hans' : 'zh-Hant';
+    return 'zh-Hant';
+  }
+
+  var segEl = document.getElementById('langSeg');
+  if (segEl) segEl.addEventListener('click', function (e) {
+    var b = e.target.closest('button[data-lang]'); if (b) apply(b.getAttribute('data-lang'));
+  });
+
+  apply(detect());
+})();
+</script>
 <script src="https://unpkg.com/lottie-web@5.12.2/build/player/lottie.min.js"></script>
 <script>
 (function () {
