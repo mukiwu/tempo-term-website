@@ -1,0 +1,22 @@
+# macOS
+.DS_Store
+
+# Claude Code 本機設定與 skill（不進公開 repo）
+.claude/
+
+# 內部規格文件
+docs/
+
+# 參考素材（開發過程中拿來對照，不是網站的一部分）
+*.mp4
+*.zip
+ae6c286cb238fc074b4c63c7f0730feb.webp
+
+# 舊 prototype
+index2.html
+slideshow.html
+
+# 依賴與測試產物
+node_modules/
+test-results/
+tmp/
