@@ -23,9 +23,16 @@
 <meta name="twitter:image" content="https://mukiwu.github.io/tempo-term-website/assets/website/og-cover.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css" />
-<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css" />
+<link rel="preconnect" href="https://unpkg.com" crossorigin />
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css" media="print" onload="this.media='all'" />
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css" media="print" onload="this.media='all'" />
+<noscript>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css" />
+</noscript>
 <style>
   :root {
     --bg: #07080A;
@@ -501,7 +508,7 @@
   /* integration: flat product screenshot */
   .showcase { max-width: 960px; margin: 0 auto; }
   .showcase-frame { position: relative; border-radius: 14px; overflow: hidden; box-shadow: 0 40px 100px -50px rgba(0,0,0,.9); }
-  .showcase-frame img { width: 100%; display: block; }
+  .showcase-frame img { width: 100%; height: auto; display: block; }
   .sc-tools { display: flex; justify-content: center; flex-wrap: wrap; margin: 30px auto 0;
     width: fit-content; padding: 11px 6px; border-radius: var(--r-pill);
     background: rgba(255,255,255,.04); border: 1px solid var(--line);
@@ -786,14 +793,14 @@
 <!-- LOADING SCREEN (one-time; JS clears it, then the bento bursts in) -->
 <div class="loader" id="loader" aria-hidden="true">
   <div class="loader-inner">
-    <span class="loader-mark"><img src="assets/icon/128x128@2x.png" alt="" /></span>
+    <span class="loader-mark"><img src="assets/icon/mark-128.webp" width="128" height="128" alt="" /></span>
     <div class="loader-bar"><span></span></div>
   </div>
 </div>
 
 <div class="nav-holder" id="navHolder">
   <nav class="nav">
-    <a class="brand" href="#top"><span class="mark img"><img src="assets/icon/128x128@2x.png" alt="TempoTerm" /></span>TempoTerm</a>
+    <a class="brand" href="#top"><span class="mark img"><img src="assets/icon/mark-128.webp" width="128" height="128" alt="TempoTerm" /></span>TempoTerm</a>
     <div class="nav-menu">
       <div class="nav-links">
         <a href="#solution" data-i18n="features">功能介紹</a>
@@ -883,7 +890,7 @@
         <div class="cc cc-center" id="centerCard">
           <div class="halo"></div>
           <span class="badge">AI-NATIVE TERMINAL</span>
-          <div class="mark-lg img"><img src="assets/icon/128x128@2x.png" alt="TempoTerm" /></div>
+          <div class="mark-lg img"><img src="assets/icon/mark-128.webp" width="128" height="128" alt="TempoTerm" /></div>
           <div class="word">TempoTerm</div>
           <p class="tag" data-i18n="best_experience">給你最好的終端機體驗</p>
         </div>
@@ -953,7 +960,10 @@
 
       <div class="showcase reveal">
         <div class="showcase-frame" data-parallax="0.06">
-          <img src="assets/screenshots/hero.png" data-i18n-attr="alt:integrate.alt" alt="TempoTerm 工作區：檔案總管、程式碼編輯器、終端機與 AI 助手同框" loading="lazy" />
+          <img src="assets/screenshots/hero.webp"
+            srcset="assets/screenshots/hero-1080.webp 1080w, assets/screenshots/hero-1600.webp 1600w, assets/screenshots/hero.webp 3248w"
+            sizes="(max-width: 640px) calc(100vw - 40px), (max-width: 1244px) calc(100vw - 64px), 1116px"
+            width="3248" height="2120" data-i18n-attr="alt:integrate.alt" alt="TempoTerm 工作區：檔案總管、程式碼編輯器、終端機與 AI 助手同框" loading="lazy" />
         </div>
         <div class="sc-tools">
           <span><i class="ph ph-git-fork"></i><span data-i18n="sc.opensource">免費開源</span></span>
@@ -975,7 +985,7 @@
           <span class="pc-glare"></span>
           <i class="ph ph-wifi-high pc-nfc" aria-hidden="true"></i>
           <div class="philo-id">
-            <span class="av"><img src="assets/website/avatar.png" alt="MUKi" /></span>
+            <span class="av"><img src="assets/website/avatar.webp" width="96" height="96" alt="MUKi" /></span>
             <div><div class="nm">MUKi</div><div class="role">@mukiwu · MUKI space*</div></div>
           </div>
           <div class="pc-slogan" data-i18n="philo.slogan">打造順手的 AI 開發工具</div>
@@ -1176,7 +1186,7 @@
     <div class="wrap">
       <div class="foot-grid">
         <div class="foot-brand">
-          <a class="brand" href="#top"><span class="mark img"><img src="assets/icon/128x128@2x.png" alt="TempoTerm" /></span>TempoTerm</a>
+          <a class="brand" href="#top"><span class="mark img"><img src="assets/icon/mark-128.webp" width="128" height="128" alt="TempoTerm" /></span>TempoTerm</a>
           <p data-i18n="tagline">為開發而生的超輕量終端機軟體</p>
           <div class="foot-social">
             <a href="https://github.com/mukiwu/tempo-term" aria-label="GitHub"><i class="ph ph-github-logo"></i></a>
@@ -1376,26 +1386,38 @@
   apply(detect());
 })();
 </script>
-<script src="https://unpkg.com/lottie-web@5.12.2/build/player/lottie.min.js"></script>
 <script>
 (function () {
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var mobileHero = window.matchMedia('(max-width: 768px)').matches;
 
-  /* ---------- ambient flow Lottie (plays only while in view) ---------- */
-  if (window.lottie) {
+  /* ---------- ambient flow Lottie (player lazy-loads near view, plays only while in view) ---------- */
+  (function () {
     var flowEl = document.getElementById('ctaFlow');
-    if (flowEl) {
+    if (!flowEl) return;
+    var flowAnim = null;
+    function initFlow(autoplay) {
+      if (flowAnim || !window.lottie) return;
       try {
-        var flowAnim = lottie.loadAnimation({ container: flowEl, renderer: 'svg', loop: true, autoplay: false, path: 'assets/lottie/ambient-flow.json' });
-        if ('IntersectionObserver' in window) {
-          new IntersectionObserver(function (es) {
-            es.forEach(function (e) { if (e.isIntersecting) { flowAnim.play(); } else { flowAnim.pause(); } });
-          }, { threshold: 0.02 }).observe(flowEl);
-        } else { flowAnim.play(); }
+        flowAnim = lottie.loadAnimation({ container: flowEl, renderer: 'svg', loop: true, autoplay: autoplay, path: 'assets/lottie/ambient-flow.json' });
       } catch (e) {}
     }
-  }
+    function loadPlayer(autoplay) {
+      if (window.lottie) { initFlow(autoplay); return; }
+      var s = document.createElement('script');
+      s.src = 'https://unpkg.com/lottie-web@5.12.2/build/player/lottie.min.js';
+      s.onload = function () { initFlow(autoplay); };
+      document.head.appendChild(s);
+    }
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) {
+        es.forEach(function (e) {
+          if (e.isIntersecting) { if (flowAnim) { flowAnim.play(); } else { loadPlayer(true); } }
+          else if (flowAnim) { flowAnim.pause(); }
+        });
+      }, { threshold: 0.02, rootMargin: '400px 0px' }).observe(flowEl);
+    } else { loadPlayer(true); }
+  })();
 
   /* ---------- scroll progress bar + parallax ---------- */
   var progressBar = document.getElementById('scrollProgress');
@@ -1614,9 +1636,11 @@
     }
     var start = Date.now();
     function whenReady() { setTimeout(go, Math.max(0, 1150 - (Date.now() - start))); }
-    if (document.readyState === 'complete') whenReady();
-    else window.addEventListener('load', whenReady);
-    setTimeout(go, 3500);                            // hard safety cap
+    /* 等 window.load 會被圖片/字型下載拖住（慢網路下可拖到 9 秒才揭幕，LCP 爆掉）；
+       DOM 好了就開始倒數，不等資源 */
+    if (document.readyState !== 'loading') whenReady();
+    else document.addEventListener('DOMContentLoaded', whenReady);
+    setTimeout(go, 2500);                            // hard safety cap
   })();
 
   /* ---------- Reveal on scroll ---------- */
